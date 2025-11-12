@@ -1,17 +1,33 @@
 // const express=require('express')
 import express from 'express';
+import login from './pages/login.js';
+import submit from './pages/submit.js';
+import home from './pages/home.js';
+import path from'path'
 const app=express();
 
 app.get('/', (req,res)=>{
-res.send("<h1>This is Home Page!</h1>");
+    const abspath = path.resolve('view/home.html')
+    res.sendFile(abspath)
 })
+
+app.get('/login', (req,res)=>{
+    const abspath = path.resolve('view/login.html')
+    res.sendFile(abspath)
+})
+
+app.post('/submit', (req,res)=>{
+    const abspath = path.resolve('view/submit.html')
+    res.sendFile(abspath)
+})
+
+
 
 app.get('/about', (req,res)=>{
-res.send("<h1>This is About Page!</h1>");
+    const abspath = path.resolve('view/about.html')
+    res.sendFile(abspath)
 })
 
-app.get('/contact', (req,res)=>{
-res.send("<h1>This is Contact Page!</h1>");
-})
+
 
 app.listen(3200); 
